@@ -4,16 +4,16 @@ namespace :docker do
     TAG = `git rev-parse --short HEAD`.strip
 
     puts "Building Docker image"
-    sh "docker build -t tzumby/rails-app:#{TAG} ."
+    sh "docker build -t cdrage/rails-app:#{TAG} ."
 
-    IMAGE_ID = `docker images | grep tzumby\/rails-app | head -n1 | awk '{print $3}'`.strip
+    IMAGE_ID = `docker images | grep cdrage\/rails-app | head -n1 | awk '{print $3}'`.strip
 
     puts "Tagging latest image"
-    sh "docker tag #{IMAGE_ID} tzumby/rails-app:latest"
+    sh "docker tag #{IMAGE_ID} cdrage/rails-app:latest"
 
     puts "Pushing Docker image"
-    sh "docker push tzumby/rails-app:#{TAG}"
-    sh "docker push tzumby/rails-app:latest"
+    sh "docker push cdrage/rails-app:#{TAG}"
+    sh "docker push cdrage/rails-app:latest"
 
     puts "Done"
   end
